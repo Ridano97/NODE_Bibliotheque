@@ -22,6 +22,15 @@ class LivreController {
         }
     }
 
+    async addLivre(request, result) {
+        try {
+            const livre = await LivreService.addLivre(request.body);
+            result.json(livre);
+        } catch (error) {
+            result.status(500);
+            result.json({error : "Une erreur est survenu lors de l'ajout d'un livre"})
+        }
+    }
     
 }
 
