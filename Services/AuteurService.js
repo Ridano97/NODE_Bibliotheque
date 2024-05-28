@@ -1,5 +1,4 @@
 const Auteur = require("../Models/Auteur");
-const { where } = require("sequelize");
 
 class AuteurService {
 
@@ -17,6 +16,18 @@ class AuteurService {
         return await Auteur.create(auteur);
     }
 
+    async removeAuteur(auteurID){
+        return await Auteur.destroy({
+            where : {Au_ID : auteurID}
+        })
+    }
+
+    async updateAuteur(auteurID, auteur){
+        return await Auteur.update(auteur , {
+            where : {Au_ID : auteurID},
+            individualHooks : true
+        })
+    }
 
 }
 

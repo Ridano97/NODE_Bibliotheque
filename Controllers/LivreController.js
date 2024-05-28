@@ -31,6 +31,26 @@ class LivreController {
             result.json({error : "Une erreur est survenu lors de l'ajout d'un livre"})
         }
     }
+
+    async removeLivre(request, result){
+        try {
+            LivreService.removeLivre(request.params.id)
+            result.json({message : "Le livre a bien été supprimé"})
+        } catch (error) {
+            result.status(500);
+            result.json({error : "Une erreur est survenue lors de la suppression du livre"})
+        }
+    }
+
+    async updateLivre(request, result){
+        try {
+            const livre = await LivreService.updateLivre(request.params.id, request.body);
+            result.json(livre);
+        } catch (error) {
+            result.json(500);
+            result.json({error : "Une erreur est survenue lors de la modification du livre"})
+        }
+    }
     
 }
 

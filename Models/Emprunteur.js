@@ -8,6 +8,14 @@ const Emprunts = require('./Emprunts');
 
 class Emprunteur extends Model {
 
+    async validatepassword(password){
+        return await bcrypt.compare(password, this.Em_password)
+    }
+
+    async toto(tata) {
+        return 
+    }
+
 }
 
 Emprunteur.init ({
